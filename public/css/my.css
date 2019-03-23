@@ -1,0 +1,11 @@
+.jumbotron {
+    background-image: url('../images/ecole.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 250px;
+}
+.ck-content .table {
+    width: auto;
+    min-height: 200px;
+}
