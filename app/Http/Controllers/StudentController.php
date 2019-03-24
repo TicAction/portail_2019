@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
 use Illuminate\Http\Request;
 use App\Student;
 use Illuminate\Support\Facades\Auth;
@@ -57,16 +58,15 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        $user= Auth::user()->id;
         $student = new Student();
         $student->firstname = $request->get('firstname');
         $student->lastname = $request->get('lastname');
-        $student->user_id = $user;
+        $student->user_id = Auth::user()->id;
         $student->save();
 
-        return redirect('student')->with('success', 'Enregistrement fait');
+        return redirect('eleve')->with('success', 'Enregistrement fait');
     }
 
     /**
@@ -99,13 +99,12 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
-
         $student->firstname = $request->get('firstname');
         $student->lastname = $request->get('lastname');
         $student->update();
-        return redirect('student');
+        return redirect('eleve')->with('success','Les modifications ont été faits');
     }
 
     /**
@@ -118,6 +117,6 @@ class StudentController extends Controller
     {
 
         $student->delete();
-        return redirect('student')->with('erase', 'Enregistrement effacer');
+        return redirect('eleve')->with('erase', 'Enregistrement effacer');
     }
 }

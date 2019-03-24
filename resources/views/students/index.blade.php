@@ -3,6 +3,15 @@
     @include('students.create')
     @endsection
 @section('content')
+    @if($errors->any())
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <li>
+                    {{$error}}
+                </li>
+            @endforeach
+        </div>
+            @endif
 <p>
 
     <div class="card">
