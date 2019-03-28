@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
+    <exemple-component></exemple-component>
     <p>
+
+
 
 
     <div class="card">
@@ -9,8 +12,8 @@
             <h5>Comportements des 30 derniers jours</h5>
         </div>
 
-    @foreach($students as $student)
-         @foreach($student->behaviors as $behavior)
+    @foreach($behaviors->sortBy("behavior_date") as $behavior)
+         @foreach($behavior->students as $student)
              @if($behavior->behavior_date >= \Carbon\Carbon::now()->subMonth('1'))
              <div class="card-body">
 

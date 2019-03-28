@@ -15,9 +15,12 @@ class CreateInterventionsTable extends Migration
     {
         Schema::create('interventions', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('intervention_date');
+            $table->longtext('intervention_content');
+            $table->unsignedInteger('student_id')->index();
             $table->timestamps();
         });
+
     }
 
     /**

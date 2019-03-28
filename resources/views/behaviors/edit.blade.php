@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header bg-primary text-white">
                 @foreach($behavior->students as $student)
-                Modifier la fiche de {{$student->fullname}}
+                Modifier la fiche de {{$student->full_name}}
                     @endforeach
             </div>
             <div class="card-body">
@@ -16,15 +16,17 @@
                     @method('PUT')
 
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="students">Choisir un élève</label>
-                            <select name="students" class="form-control">
-                                @foreach($behavior->students as $student)
-                                <option value="{{$student->id}}"> {{$student->fullname}}</option>
+                         <div class="col-md-6">
+                             <label for="students">Choisir un élève</label>
 
-                                @endforeach
+                             <select name="students" class="form-control">
 
-                            </select>
+                                 @foreach($students as $student)
+                                     @foreach($behavior->students as $stu)
+                                 <option value="{{$stu->id}}" {{$stu->id == $student->id ? 'selected' : ''}}> {{$student->fullname}} </option>
+                             @endforeach
+                             @endforeach
+                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="behavior_date">Date du comportement</label>

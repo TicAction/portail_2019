@@ -13,6 +13,14 @@ class Student extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($query) {
+            $query->user_id = auth()->id();
+        });
+    }
 
     public function user()
     {
@@ -34,7 +42,10 @@ class Student extends Model
         return "{$this->firstname} {$this->lastname}";
     }
 
-
+    public function interventions()
+    {
+        return $this->hasMany(Intervention::class);
+    }
 
 
 }

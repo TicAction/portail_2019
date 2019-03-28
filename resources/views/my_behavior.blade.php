@@ -35,7 +35,9 @@
 
                          @foreach($behavior->observations as $observation)
                              <br>
-                                 {{$observation->observation}}
+                                <ul> <li>
+                                    {{$observation->observation}}
+                                </li></ul>
                          @endforeach
                 <a href="{{route('behavior_edit',$behavior->id)}}">
                     <button class="btn btn-primary btn-sm">Modifier</button>

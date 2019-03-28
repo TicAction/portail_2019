@@ -34,5 +34,18 @@
     </tr>
         @endforeach
 </table>
+
+<table class="table ">
+    <tr>
+        <th width="25%">Date de l'intervention</th>
+        <th width="75%">Intervention</th>
+    </tr>
+    @foreach($student->interventions as $intervention)
+        <tr>
+            <td>{{$intervention->intervention_date->format('d-m-Y')}} {{$intervention->intervention_period}}</td>
+            <td>{!!$intervention->intervention_content  !!}</td>
+        </tr>
+    @endforeach
+</table>
 </body>
 </html>

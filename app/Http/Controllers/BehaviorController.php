@@ -100,9 +100,9 @@ class BehaviorController extends Controller
      */
     public function edit(Behavior $behavior)
     {
-        $students = Auth::user()->students()->get();
-        $observations = Observation::all();
+        $students = Auth::user()->students;
 
+        $observations = Observation::all();
 
         $level_one= $observations->where('severity_id','=',1)->pluck('observation','id');
         $level_two = $observations->where('severity_id','=',2)->pluck('observation','id');
@@ -150,6 +150,6 @@ class BehaviorController extends Controller
         $behavior->students()->detach();
 
         $behavior->delete();
-        return redirect('')->with('danger','Le comportement à été effacé');
+        return redirect('/')->with('danger','Le comportement à été effacé');
     }
 }

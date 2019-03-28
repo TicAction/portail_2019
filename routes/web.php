@@ -49,5 +49,13 @@ Route::get('plan_intervention/{pi}/modifier','PiController@edit')->name('pi_edit
 Route::put('plan_intervention/{pi}','PiController@update')->name('pi_update');
 Route::delete('plan_intervention/{pi}','PiController@destroy')->name('pi_delete');
 
+Route::get('/intervention','InterventionController@index')->name('intervention_index');
+Route::get('intervention/creation','InterventionController@create')->name('intervention_create');
+Route::post('intervention','InterventionController@store')->name('intervention_store');
+Route::get('intervention/{intervention}','InterventionController@show')->name('intervention_show');
+Route::get('intervention/{intervention}/modifier','InterventionController@edit')->name('intervention_edit');
+Route::put('intervention/{intervention}','InterventionController@update')->name('intervention_update');
+Route::delete('intervention/{intervention}','InterventionController@destroy')->name('intervention_delete');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('observation','ObservationController');

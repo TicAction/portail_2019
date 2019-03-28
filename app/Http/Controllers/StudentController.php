@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
+use App\Intervention;
 use Illuminate\Http\Request;
 use App\Student;
 use Illuminate\Support\Facades\Auth;
@@ -63,8 +64,8 @@ class StudentController extends Controller
         $student = new Student();
         $student->firstname = $request->get('firstname');
         $student->lastname = $request->get('lastname');
-        $student->user_id = Auth::user()->id;
         $student->save();
+
 
         return redirect('eleve')->with('success', 'Enregistrement fait');
     }
@@ -78,7 +79,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
 
-        return view('students.show', compact('student'));
+        return view('students.show', compact('student','intervention'));
     }
 
     /**

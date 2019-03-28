@@ -29,10 +29,10 @@ class HomeController extends Controller
     public function index()
     {
 
-        $students = Student::where('user_id', '=', Auth::user()->id)->get();
+        $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
+//        $behaviors->load('students');
 
-
-        return view('home', compact('students'));
+        return view('home', compact('behaviors'));
     }
 
     public function behaviors()
