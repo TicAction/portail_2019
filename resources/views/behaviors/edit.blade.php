@@ -11,7 +11,7 @@
             <div class="card-body">
 
 
-                <form action="{{route('behavior_update',$behavior->id)}}" method="POST">
+                <form action="{{route('behavior.update',$behavior->id)}}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -61,7 +61,7 @@
     </p>
 
     </form>
-    <form action="{{route('behavior_delete',$behavior->id)}}" method="POST">
+    <form action="{{route('behavior.delete',$behavior->id)}}" method="POST">
     @method('DELETE') @csrf
     <button class="btn btn-danger" type="submit">Effacer ce comportement</button>
     </form>

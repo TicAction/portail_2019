@@ -7,7 +7,7 @@
             Ajouter un comportement pour {{$student->fullname}}
         </div>
         <div class="card-body">
-            <form action="{{route('behavior_store')}}" method="POST">
+            <form action="{{route('behavior.store')}}" method="POST">
                 @csrf
 
                 <div class="row">

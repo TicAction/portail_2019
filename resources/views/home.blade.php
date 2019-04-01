@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <exemple-component></exemple-component>
+
     <p>
 
 
-
+        <exemple-component></exemple-component>
 
     <div class="card">
         <div class="card-header text-white bg-primary mb-3">
@@ -39,7 +39,7 @@
                 </ul>
             </div>
                 <div class="text-right">
-                    <a href="{{route('behavior_edit',$behavior->id)}}">
+                    <a href="{{route('behavior.edit',$behavior->id)}}">
                         <button class="btn btn-primary btn-sm">Modifier</button>
                     </a>
 
