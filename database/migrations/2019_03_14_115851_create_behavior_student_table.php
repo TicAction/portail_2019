@@ -16,8 +16,10 @@ class CreateBehaviorStudentTable extends Migration
     {
         Schema::create('behavior_student', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('student_id')->unsigned()->index();
-            $table->integer('behavior_id')->unsigned()->index();
+            $table->unsignedInteger('student_id')->index();
+            $table->unsignedInteger('behavior_id')->index();
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('behavior_id')->references('id')->on('behaviors')->onDelete('cascade');
         });
     }
 

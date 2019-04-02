@@ -15,7 +15,7 @@
                         <th>Comportement</th>
 
                     </tr>
-                    @foreach($behaviors->sortByDesc('behavior_date') as $behavior)
+                    @foreach($behaviors->sortByDesc('behavior.date') as $behavior)
                         @foreach($behavior->students as $student)
                     <tr>
                         <td width="25%"> <strong>{{$behavior->behavior_date->format('d-m-Y')}}</strong></td>
@@ -36,10 +36,10 @@
                          @foreach($behavior->observations as $observation)
                              <br>
                                 <ul> <li>
-                                    {{$observation->observation}}
+                                        {{$observation->observation}}
                                 </li></ul>
                          @endforeach
-                <a href="{{route('behavior_edit',$behavior->id)}}">
+                <a href="{{route('behavior.edit',$behavior->id)}}">
                     <button class="btn btn-primary btn-sm">Modifier</button>
                 </a>
                            </p>

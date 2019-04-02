@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPeriodToInterventionsTable extends Migration
+class CreateGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddPeriodToInterventionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('interventions', function (Blueprint $table) {
-            $table->string('intervention_period');
+        Schema::create('grades', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('grade');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddPeriodToInterventionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('interventions', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('grades');
     }
 }

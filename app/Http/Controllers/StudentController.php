@@ -116,7 +116,12 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-
+        foreach($student->behaviors as $behavior):
+            $behavior->observations()->detach();
+        endforeach;
+        $student->behaviors()->delete();
+        $student->interventions()->delete();
+        $student->behaviors()->detach();
         $student->delete();
         return redirect('eleve')->with('erase', 'Enregistrement effacer');
     }

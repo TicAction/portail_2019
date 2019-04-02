@@ -31,7 +31,7 @@
                     <td>{{$student->firstname}} {{$student->lastname}}</td>
                     <td>
                         <a href="{{route('student_edit',$student->id)}}"><button class="bth btn-primary btn-sm">Modifie le nom</button></a>
-                        <a href="{{route('behavior_create',$student->id)}}"><button class="bth btn-primary btn-sm">Ajouter un comportement</button></a>
+                        <a href="{{route('behavior.create',$student->id)}}"><button class="bth btn-primary btn-sm">Ajouter un comportement</button></a>
                     </td>
                     <td>
 

@@ -3,8 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-use App\Student;
+
 
 class Behavior extends Model
 {
@@ -19,11 +18,7 @@ class Behavior extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * students
-     *
-     * @return void
-     */
+
     public function students()
     {
         return $this->belongsToMany(Student::class);

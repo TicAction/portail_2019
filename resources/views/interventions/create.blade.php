@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="intervention_date">Date de l'observation</label>
                             <select name="intervention_period" class="form-control">
-                                <option value="">Aucune importance</option>
+                                <option value="Aucune importance">Aucune importance</option>
                                 <option value="Première pédiode">Première pédiode</option>
                                 <option value="Deuxième pédiode">Deuxième pédiode</option>
                                 <option value="Récréation">Récréation</option>

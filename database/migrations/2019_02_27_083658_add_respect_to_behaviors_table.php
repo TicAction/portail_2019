@@ -14,7 +14,7 @@ class AddRespectToBehaviorsTable extends Migration
     public function up()
     {
         Schema::table('behaviors', function (Blueprint $table) {
-            $table->boolean('respect');
+            $table->boolean('respect')->nullable();
         });
     }
 

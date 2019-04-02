@@ -25,13 +25,14 @@ Route::get('enseignant/classe/{id}','StudentController@classroom')->name('studen
 
 
 
-Route::get('comportement','BehaviorController@index')->name('behavior_index');
-Route::get('comportement/creation/{id}','BehaviorController@create')->name('behavior_create');
-Route::post('comportement','BehaviorController@store')->name('behavior_store');
-Route::get('comportement/{id}/','BehaviorController@show')->name('behavior_show');
-Route::get('comportement/{behavior}/modifier','BehaviorController@edit')->name('behavior_edit');
-Route::put('comportement/{behavior}','BehaviorController@update')->name('behavior_update');
-Route::delete('comportement/{behavior}','BehaviorController@destroy')->name('behavior_delete');
+Route::get('comportement','BehaviorController@index')->name('behavior.index');
+Route::get('comportement/creation/{id}','BehaviorController@create')->name('behavior.create');
+Route::post('comportement','BehaviorController@store')->name('behavior.store');
+Route::get('comportement/{id}/','BehaviorController@show')->name('behavior.show');
+Route::get('comportement/{behavior}/modifier','BehaviorController@edit')->name('behavior.edit');
+Route::put('comportement/{behavior}','BehaviorController@update')->name('behavior.update');
+Route::delete('comportement/{behavior}','BehaviorController@destroy')->name('behavior.delete');
+
 
 Route::get('/eleve','StudentController@index')->name('student_index');
 Route::get('eleve/creation','StudentController@create')->name('student_create');

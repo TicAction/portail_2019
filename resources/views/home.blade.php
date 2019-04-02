@@ -28,7 +28,7 @@
              </strong>
             <hr>
                  {!!  $behavior->behavior_content!!}
-                 @if($behavior->respect == 'on')
+                 @if($behavior->respect == '1')
                      <strong>
                          Manque de respect
                      </strong>

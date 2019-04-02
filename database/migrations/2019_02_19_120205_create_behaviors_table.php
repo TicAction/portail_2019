@@ -17,7 +17,6 @@ class CreateBehaviorsTable extends Migration
             $table->increments('id');
             $table->date('behavior_date');
             $table->text('behavior_content')->nullable();
-            $table->integer('student_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
         });

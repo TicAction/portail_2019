@@ -21,9 +21,10 @@ class CreateObservationsTable extends Migration
         });
         Schema::create('behavior_observation',function(Blueprint $table){
            $table->increments('id');
-           $table->integer('behavior_id')->index()->unsigned();
+            $table->integer('behavior_id')->index()->unsigned();
+            $table->foreign('behavior_id')->references('id')->on('behaviors')->onDelete('cascade');
            $table->integer('observation_id')->index()->unsigned();
-           $table->primary(['observation_id','behavior_id']);
+            $table->foreign('observation_id')->references('id')->on('observations')->onDelete('cascade');
         });
     }
 

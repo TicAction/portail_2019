@@ -25,7 +25,7 @@
                 {!! Form::textarea('behavior_content', null, ['class' => 'form-control','id'=>'editor']) !!}
                 <br>
                 <label for="respect">Manque de respect</label>
-                <input type="checkbox" name="respect" class="form-group" value="on" >
+                <input type="checkbox" name="respect" class="form-group" value="1" >
                 <br>
 
 

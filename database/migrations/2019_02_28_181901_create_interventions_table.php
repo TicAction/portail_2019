@@ -17,7 +17,9 @@ class CreateInterventionsTable extends Migration
             $table->increments('id');
             $table->string('intervention_date');
             $table->longtext('intervention_content');
+            $table->string('intervention_period');
             $table->unsignedInteger('student_id')->index();
+            $table->foreign('student_id')->references('id')->on('students')->OnDelete('cascade');
             $table->timestamps();
         });
 
