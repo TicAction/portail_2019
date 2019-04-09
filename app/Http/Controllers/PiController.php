@@ -31,6 +31,8 @@ class PiController extends Controller
     public function index()
     {
         $pis = Pi::all();
+        $pis->load('student');
+
        return view('pis.index',compact('pis'));
     }
 

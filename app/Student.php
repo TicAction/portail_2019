@@ -13,18 +13,11 @@ class Student extends Model
 
     protected $dates = ['created_at', 'updated_at'];
 
-    protected static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($query) {
-            $query->user_id = auth()->id();
-        });
-    }
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
 

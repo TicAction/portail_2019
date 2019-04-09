@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Grade;
 use App\Group;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $group = Group::all();
+        return view('groups.index',compact('group'));
+
     }
 
     /**
@@ -24,7 +27,8 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('groups.create');
     }
 
     /**
@@ -35,7 +39,12 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = new Grade();
+
+        $group->group = $request->get('group');
+        $group->grade_id = $request->get('grade_id');
+        $group->save();
+        return redirect('group')->with('success',"L'enregistrement groupe a bien été effectuer.");
     }
 
     /**

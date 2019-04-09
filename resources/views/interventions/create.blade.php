@@ -16,9 +16,9 @@
                 <div class="form-group">
                     <label for="student">Choisir un élève</label>
                    <select class="form-control" name="student" >
-                       @foreach($student as $key=>$stu)
-                       <option value="{{$key}}">{{$stu}}</option>
-                           @endforeach
+                       @foreach(Auth::user()->students as $st)
+                       <option value="{{$st->id}}">{{$st->fullname}}</option>
+                        @endforeach
                    </select>
                 </div>
                 <div class="row">

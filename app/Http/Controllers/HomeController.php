@@ -30,7 +30,8 @@ class HomeController extends Controller
     {
 
         $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
-//        $behaviors->load('students');
+
+        $behaviors->load(['students','observations']);
 
         return view('home', compact('behaviors'));
     }

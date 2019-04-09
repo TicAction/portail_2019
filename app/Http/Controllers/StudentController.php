@@ -38,8 +38,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('students.index', compact('students'));
+        $stud = Student::all();
+        $stud->load('users');
+
+        return view('students.index', compact('stud'));
     }
 
     /**
@@ -61,10 +63,13 @@ class StudentController extends Controller
      */
     public function store(StudentRequest $request)
     {
+        $user_id = Auth::user()->id;
         $student = new Student();
         $student->firstname = $request->get('firstname');
         $student->lastname = $request->get('lastname');
+
         $student->save();
+        $student->users()->attach($user_id);
 
 
         return redirect('eleve')->with('success', 'Enregistrement fait');
@@ -78,6 +83,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
+        $intervention = Intervention::all();
 
         return view('students.show', compact('student','intervention'));
     }
@@ -121,7 +127,9 @@ class StudentController extends Controller
         endforeach;
         $student->behaviors()->delete();
         $student->interventions()->delete();
+        $student->pis()->delete();
         $student->behaviors()->detach();
+        $student->users()->detach();
         $student->delete();
         return redirect('eleve')->with('erase', 'Enregistrement effacer');
     }

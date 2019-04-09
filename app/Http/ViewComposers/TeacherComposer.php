@@ -19,6 +19,7 @@ class TeacherComposer
     public function compose(View $view)
     {
         $user = User::all()->sortBy('name');
+        $user->load('students');
         $view->with('users', $user);
     }
 }

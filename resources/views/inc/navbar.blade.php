@@ -20,6 +20,9 @@
          <li>
                 <a class="nav-link " href="{{route('pi_index')}}">Rencontre PI <span class="sr-only">(current)</span></a>
          </li>
+          <li>
+                <a class="nav-link " href="#">Littératie <span class="sr-only">(current)</span></a>
+         </li>
 
          <li>
                 <a class="nav-link " href="{{route('intervention_index')}}">Observations en classe <span class="sr-only">(current)</span></a>

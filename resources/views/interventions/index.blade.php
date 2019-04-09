@@ -10,19 +10,21 @@
 
        <div class="text-right">
            <p>
-       <a href="{{route('intervention_create')}}"><button class="btn btn-primary">Ajouter une intervention</button></a>
-
+       <a href="{{route('intervention_create')}}"><button class="btn btn-primary btn-sm">Ajouter une intervention</button></a>
+        <hr>
          </p>
-
        </div>
+
             @foreach($interventions as $intervention)
             <div class="row">
                 <div class="col-md-3">
-                    {{$intervention->student->full_name}}
+                    <strong>
+                        {{$intervention->student->full_name}}
+                    </strong>
                     <br>
                     {{$intervention->intervention_date->format('d-m-Y')}}
                     <br>
-                    {{$intervention->intervention_period}}
+                    <small>{{$intervention->intervention_period}}</small>
                 </div>
                 <div class="col-md-6">
 

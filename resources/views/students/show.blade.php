@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('sidebar')
+
     <p>
     <div class="card">
         <div class="card-header text-white bg-primary ">
@@ -22,18 +23,7 @@
         </div>
     </div>
     </p>
-    {{--<p>--}}
-    {{--<div class="card">--}}
-        {{--<div class="card-header text-white bg-primary">--}}
-            {{--<h5>Prochain PI</h5>--}}
-        {{--</div>--}}
 
-        {{--<div class="card-body">--}}
-            {{--<ul class="list-unstyled">--}}
-                {{--fasdfa--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{--</p>--}}
 @endsection
 @section('content')
 
@@ -79,22 +69,14 @@
                     </strong>
                 @endif
                 <div class="text-right">
-                    <a href="{{route('behavior_edit',$behavior->id)}}"><button class="bth btn-primary btn-sm">Modifier</button></a>
+                    <a href="{{route('behavior.edit',$behavior->id)}}"><button class="bth btn-primary btn-sm">Modifier</button></a>
                 </div>
 
             </div>
 
         @endforeach
 
-
-
-
-
-
-
     </p>
-
-
     <p>
     <div class="card">
         <div class="card-header text-white bg-primary">
@@ -104,10 +86,11 @@
             @foreach($student->interventions as $intervention)
              <strong>{{$intervention->intervention_date->format('d-m-Y')}} --- {{$intervention->intervention_period}}</strong>
             {!! $intervention->intervention_content !!}
-                @endforeach
+
                 <div class="text-right">
                     <a href="{{route('intervention_edit',$intervention->id)}}"><button class="bth btn-primary btn-sm">Modifier</button></a>
                 </div>
+            @endforeach
         </div>
 
 

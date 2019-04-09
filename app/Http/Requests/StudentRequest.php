@@ -26,8 +26,6 @@ class StudentRequest extends FormRequest
         return [
             'firstname'=>'required|min:3',
             'lastname'=>'required|min:3',
-            'user_id'=>'',
-
         ];
     }
     public function messages()

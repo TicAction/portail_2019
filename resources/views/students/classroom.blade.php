@@ -26,7 +26,7 @@
 
                         <td class="text-center">
 
-                            <a href="{{route("behavior_create",$student->id)}}"><button class="btn btn-primary btn-sm">Ajouter un comportement</button></a>
+                            <a href="{{route("behavior.create",$student->id)}}"><button class="btn btn-primary btn-sm">Ajouter un comportement</button></a>
                         </td>
 
                         <td class="text-center">

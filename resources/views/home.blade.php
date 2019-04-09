@@ -12,6 +12,7 @@
             <h5>Comportements des 30 derniers jours</h5>
         </div>
 
+
     @foreach($behaviors->sortBy("behavior_date") as $behavior)
          @foreach($behavior->students as $student)
              @if($behavior->behavior_date >= \Carbon\Carbon::now()->subMonth('1'))

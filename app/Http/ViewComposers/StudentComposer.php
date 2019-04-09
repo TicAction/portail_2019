@@ -22,6 +22,7 @@ class StudentComposer
     public function compose(View $view)
     {
         $students = Auth::user()->students->sortBy('lastname');
+        $students->load('behaviors');
 
         $view->with('students', $students);
     }

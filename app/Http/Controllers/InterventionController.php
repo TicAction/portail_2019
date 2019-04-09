@@ -31,10 +31,14 @@ class InterventionController extends Controller
      */
     public function create()
     {
-        $students = Student::all();
-        $student = $students->where('user_id','=', Auth::user()->id)->pluck('full_name','id');
+        $student = Student::all();
+
+
+//                $student = $students->where($user->pivot->user_id,'=',2 )->pluck('full_name','id');
 
         return view('interventions.create',compact('student'));
+
+
     }
 
     /**
