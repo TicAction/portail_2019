@@ -14,7 +14,12 @@
                 <form action="{{route('pi_store')}}" method="POST" class="form-group">
                     @csrf
                     <label for="student">Élèves de la classe</label>
-                    {!! Form::select('student', $student , null , ['class' => 'form-control']) !!}
+
+                    <select class="form-control" name="student" >
+                        @foreach(Auth::user()->students as $st)
+                            <option value="{{$st->id}}">{{$st->fullname}}</option>
+                        @endforeach
+                    </select>
 
                     <label for="student">Date du PI</label>
                    {!! Form::date('pi_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}

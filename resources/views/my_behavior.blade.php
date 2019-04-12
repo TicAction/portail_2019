@@ -26,11 +26,11 @@
                             <div class="truncate" >
                           <p>
                                {!!  $behavior->behavior_content!!}
-                @if($behavior->respect == 'on')
-                    <strong>
-                        Manque de respect
-                    </strong>
-                @endif
+                <br>
+                            <strong>
+                                {{$behavior->respect == '1' ? 'Manque de respect' : ''}}
+                            </strong>
+
                          <br>
 
                          @foreach($behavior->observations as $observation)
@@ -54,6 +54,11 @@
 
                     </div>
 
+            </div>
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                    {!! $behaviors->links() !!}
+                </div>
             </div>
             </p>
 

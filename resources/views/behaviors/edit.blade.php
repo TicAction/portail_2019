@@ -38,9 +38,9 @@
                     <textarea name="behavior_content" placeholder="Écrire le comportement" class="form-control" id="editor" >{{$behavior->behavior_content}}</textarea>
                     <br>
                     <label for="respect">Manque de respect</label>
-                    @if($behavior->respect == 'on')
-                    <input type="checkbox" name="respect" class="form-group" checked>
-                        @else <input type="checkbox" name="respect" class="form-group" >
+                    @if($behavior->respect == '1')
+                    <input type="checkbox" name="respect" class="form-group" value="1" checked>
+                        @else <input type="checkbox" name="respect" class="form-group" value="1" >
                     @endif
 
                     <br>

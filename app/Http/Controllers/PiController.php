@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pi;
 use App\Student;
+use Carbon\Carbon;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,8 +31,8 @@ class PiController extends Controller
      */
     public function index()
     {
-        $pis = Pi::all();
-        $pis->load('student');
+        $pis = Pi::where('pi_date','>=', Carbon::now()->subDays(1))->orderBy('pi_date','asc')->paginate(5);
+        $pis->load(['student']);
 
        return view('pis.index',compact('pis'));
     }
@@ -45,9 +46,9 @@ class PiController extends Controller
     {
         $pi = new Pi();
         $students = Student::all();
-        $student = $students->where('user_id','=', Auth::user()->id)->pluck('full_name','id');
 
-        return view('pis.create',compact('pi','student'));
+
+        return view('pis.create',compact('pi','students'));
     }
 
     /**

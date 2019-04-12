@@ -70,10 +70,12 @@ class BehaviorController extends Controller
             }
         endif;
             foreach ($behavior->students as $student):
+                foreach ($student->users as $user):
 
-      Mail::to([$student->user->email])->send(
-          new BehaviorCreated($behavior)
-      );
+                      Mail::to([$user->email])->send(
+                          new BehaviorCreated($behavior)
+                      );
+            endforeach;
             endforeach;
 
 
@@ -120,7 +122,7 @@ class BehaviorController extends Controller
      */
     public function update(Request $request, Behavior $behavior)
     {
-
+      
         $observations = $request->get('observation');
         $students = $request->get('students');
 

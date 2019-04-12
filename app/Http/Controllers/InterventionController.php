@@ -33,9 +33,6 @@ class InterventionController extends Controller
     {
         $student = Student::all();
 
-
-//                $student = $students->where($user->pivot->user_id,'=',2 )->pluck('full_name','id');
-
         return view('interventions.create',compact('student'));
 
 

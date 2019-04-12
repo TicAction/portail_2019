@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRequest;
 use App\Intervention;
+use App\User;
 use Illuminate\Http\Request;
 use App\Student;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
 use PDF;
 
@@ -20,9 +22,9 @@ class StudentController extends Controller
 
     public function classroom($id)
     {
-        $students = Student::where('user_id','=',$id)->get();
-        $teacher = Auth::user()->$id;
-        return view('students.classroom',compact('students','teacher'));
+        $user = User::findOrFail($id);
+
+        return view('students.classroom',compact('user'));
     }
     public function export_pdf(Student $student)
     {
@@ -84,6 +86,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         $intervention = Intervention::all();
+        $student->load(['behaviors','behaviors.observations.severity','behaviors.user']);
 
         return view('students.show', compact('student','intervention'));
     }
@@ -96,6 +99,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
+        $student->load(['interventions','behaviors','pis']);
         return view('students.edit',compact('student'));
     }
 

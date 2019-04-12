@@ -11,15 +11,7 @@
             <form action="{{route('intervention_update',$intervention->id)}}" class="form-honrizontal" method="post">
                 @csrf
                 @method('PUT')
-
-                <div class="form-group">
-                    <label for="student">Choisir un élève</label>
-                    <select class="form-control" name="student" >
-                        @foreach($student as $key=>$stu)
-                            <option value="{{$key}}" {{$key == $intervention->student->id ? 'selected' : ''}}>{{$stu}}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <input type="hidden" name="student" value="{{$intervention->student->id}}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

@@ -13,10 +13,11 @@
 
                 @foreach($student->pis as $pi)
 
+
                     @if($pi->pi_date->format('d-m-Y') >= \Carbon\Carbon::now()->format('d-m-Y'))
-                    <li class="bg-danger"><a href="{{route('pi_show',$pi->id)}}"class="text-white">{{$pi->pi_date->format("d-m-Y")}}</a></li>
+                    <li class="bg-success"><a href="{{route('pi_edit',$pi->id)}}"class="text-white">{{$pi->pi_date->format("d-m-Y")}}</a></li>
                         @else
-                        <li class="bg-success"><a href="{{route('pi_show',$pi->id)}}" class="text-white">{{$pi->pi_date->format("d-m-Y")}}</a></li>
+                        <li class="bg-danger"><a href="{{route('pi_edit',$pi->id)}}" class="text-white">{{$pi->pi_date->format("d-m-Y")}}</a></li>
                     @endif
                     @endforeach
             </ul>
@@ -42,28 +43,24 @@
             </div>
 
         </div>
-
-        </div>
-
         @foreach($student->behaviors as $behavior)
             <div class="card-body">
 
-                    <strong>{{$behavior->behavior_date->format('d-m-Y')}}  --- {{$behavior->user['name']}}</strong>
+                <strong>{{$behavior->behavior_date->format('d-m-Y')}}  --- {{$behavior->user['name']}}</strong>
                 <br>
 
-               {!! $behavior->behavior_content !!}
+                {!! $behavior->behavior_content !!}
                 @if($behavior->respect == 1)
                     <br>
-                   <strong>Avec manque de respect</strong>
-                    @endif
+                    <strong>Avec manque de respect</strong>
+                @endif
                 @foreach($behavior->observations as $observation)
                     <br>
-                <span style="background-color:{{$observation->severity->gravity_level}};">{{$observation->observation}}</span>
-
+                    <span style="background-color:{{$observation->severity->gravity_level}};">{{$observation->observation}}</span>
 
                 @endforeach
                 <br>
-                @if($behavior->respect == 'on')
+                @if($behavior->respect == '1')
                     <strong>
                         Manque de respect
                     </strong>
@@ -75,6 +72,9 @@
             </div>
 
         @endforeach
+
+        </div>
+
 
     </p>
     <p>

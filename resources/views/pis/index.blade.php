@@ -31,7 +31,7 @@
                         <td>
                             <form action="{{route('pi_delete',$pi->id)}}" method="POST">
                                 @method('DELETE') @csrf
-                                <button class="btn btn-danger btn-sm" type="submit">Effacer ce plan</button>
+                                <button class="btn btn-danger btn-sm" type="submit">Effacer</button>
                             </form>
                         </td>
                         <td>

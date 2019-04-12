@@ -14,60 +14,39 @@
 <body>
 <div class="alert alert-primary">
     <h4>{{$pi->student->fullname}}</h4>
-    <small>Le {{$pi->pi_date->format('d-m-Y')}}</small>
+    <small>PI du  {{$pi->pi_date->format('d-m-Y')}}</small>
 </div>
 
 
-<div class="card">
 
         <h4>Capacité de travail</h4>
-    <hr>
 
-    <div class="card-body">
-        <br>
         {!! $pi->pi_capacity !!}
-    </div>
-</div>
-<br>
-<div class="card">
 
         <h4>Besoins de l'enfant</h4>
-<hr>
-    <div class="card-body">
-        <br>
+
+
         <h5>Apprentissages</h5>
         {!! $pi->pi_need_school !!}
-        <br>
+
         <h5>Comportements</h5>
         {!! $pi->pi_need_behavior !!}
-        <br>
+
         <h5>Autres</h5>
         {!! $pi->pi_need_other !!}
 
-    </div>
-</div>
-<br>
 
-<div class="card">
 
-        <h4>But à atteindre
-        </h4>
-<hr>
-    <div class="card-body">
+
+
+    <h4>Buts à atteindre </h4>
+
         <br>
         {!! $pi->pi_goal !!}
-    </div>
-</div>
-<br>
 
-<div class="card">
         <h4>Moyens d'y arriver</h4>
-<hr>
-    <div class="card-body">
-        <br>
+
         {!! $pi->pi_way !!}
-    </div>
-</div>
-<br>
+
 </body>
 </html>

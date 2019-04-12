@@ -4,7 +4,8 @@
     <p>
     <div class="card">
         <div class="card-header bg-primary text-white">
-            Classe de {{$teacher}}
+
+            Classe de {{$user->name}}
         </div>
         <div class="card-body">
 
@@ -18,7 +19,7 @@
 
                 </tr>
 
-                @foreach($students->sortBy('lastname') as $student)
+                @foreach($user->students->sortBy('lastname') as $student)
 
                     <tr>
 

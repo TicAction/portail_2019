@@ -31,15 +31,15 @@ class HomeController extends Controller
 
         $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
 
-        $behaviors->load(['students','observations']);
+        $behaviors->load(['students','observations','user']);
 
         return view('home', compact('behaviors'));
     }
 
     public function behaviors()
     {
-        $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
-        $behaviors->load('students');
+        $behaviors = Behavior::where('user_id','=',Auth::user()->id)->orderBy('behavior_date','desc')->paginate(10);
+        $behaviors->load(['students','observations','user']);
 
         return view('my_behavior',compact('behaviors'));
     }
