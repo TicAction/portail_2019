@@ -10,6 +10,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="d769495e-5d7d-44a2-90ef-8d6d14e3ae0a" name="gestion" url="http://ftp.edu-gestion.ca">
+        <fileTransfer host="ftp.edu-gestion.ca" port="21" rootFolder="/portail">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

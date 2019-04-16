@@ -13,4 +13,8 @@ class Group extends Model
     {
         return $this->hasOne(Grade::class);
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

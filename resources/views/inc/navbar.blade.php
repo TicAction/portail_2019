@@ -46,6 +46,10 @@
         <li>
           <a class="nav-link navbar-text pull-right" href="{{route('logout')}}">Déconnexion</a>
         </li>
+          <li>
+
+              <a class="nav-link navbar-text pull-right" href="{{route('logout')}}">{{Auth::user()->name}}</a>
+          </li>
       </ul>
 
     </div>

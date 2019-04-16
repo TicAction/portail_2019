@@ -26,8 +26,8 @@
                     <th>Nom</th>
                     <th></th>
                     <th></th>
-
                 </tr>
+
                 @foreach (Auth::user()->students->sortBy('lastname') as $student)
                 <tr>
                     <td>{{$student->firstname}} {{$student->lastname}}</td>
