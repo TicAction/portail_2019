@@ -32,6 +32,11 @@ class UserServiceProvider extends ServiceProvider
             'inc.navbar',
             TeacherComposer::class
         );
+
+        View::composer(
+            'inc.navbar_director',
+            TeacherComposer::class
+        );
         View::composer(
             'inc.behavior',
             BehaviorComposer::class

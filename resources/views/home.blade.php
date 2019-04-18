@@ -3,9 +3,6 @@
 
     <p>
 
-
-        <exemple-component></exemple-component>
-
     <div class="card">
         <div class="card-header text-white bg-primary mb-3">
 
