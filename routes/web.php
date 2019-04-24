@@ -13,8 +13,16 @@ use App\Http\Controllers\StudentsController;
 
  */
 
+// sectin literatie
+//Route::resources('literatie','LiteracyController');
+Route::get('/cleaning/web/site', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:clear');
+    return redirect('');
+});
 
 
+//
 Auth::routes();
 
 //Partie de la direction
@@ -28,8 +36,26 @@ Route::get('admin/comportement/{behavior}/modifier','Director\BehaviorController
 Route::get('admin/comportement/creation/{id}','Director\BehaviorController@create')->name('admin.behavior.create');
 Route::put('admin/comportement/{behavior}','Director\BehaviorController@update')->name('admin.behavior.update');
 
+Route::get('admin/comportement/{id}','Director\AdminController@show')->name('admin.behavior.show');
+Route::post('admin/comportement/recherche','Director\AdminController@search')->name('admin.behavior.search');
+
 Route::post('admin/comportement','Director\BehaviorController@store')->name('admin.behavior.store');
 Route::delete('admin/comportement/{behavior}','Director\BehaviorController@destroy')->name('admin.behavior.destroy');
+
+
+//Partie de la SDG
+
+Route::get('sdg/index','Director\AdminController@index')->name('sdg.index');
+Route::get('sdg/pi','Director\AdminController@pi')->name('sdg.pi');
+Route::get('sdg/classe/{id}','Director\AdminController@classroom')->name('sdg.classroom');
+
+//sdg behaviors
+Route::get('sdg/comportement/{behavior}/modifier','Director\BehaviorController@edit')->name('sdg.behavior.edit');
+Route::get('sdg/comportement/creation/{id}','Director\BehaviorController@create')->name('sdg.behavior.create');
+Route::put('sdg/comportement/{behavior}','Director\BehaviorController@update')->name('sdg.behavior.update');
+
+Route::post('sdg/comportement','Director\BehaviorController@store')->name('sdg.behavior.store');
+Route::delete('sdg/comportement/{behavior}','Director\BehaviorController@destroy')->name('sdg.behavior.destroy');
 
 
 // méli-mélo

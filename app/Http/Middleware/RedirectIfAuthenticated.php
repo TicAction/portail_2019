@@ -19,8 +19,11 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
 
-            if (Auth::user()->role === 'Direction' or Auth::user()->role === 'SDG' or Auth::user()->role === 'Orthopédagogue') {
+            if (Auth::user()->role === 'Direction') {
                 return redirect('/admin/index');
+            }
+            if (Auth::user()->role === 'SDG') {
+                return redirect('/sdg/index');
             }
             return redirect('/');
         }

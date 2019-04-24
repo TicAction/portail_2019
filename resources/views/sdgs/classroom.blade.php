@@ -22,14 +22,12 @@
                 @foreach($user->students->sortBy('lastname') as $student)
 
                     <tr>
-                        <td>
-                            <a href="{{route('admin.behavior.show',$student->id)}}">
-                            {{$student->firstname}} {{$student->lastname}}</td>
-                            </a>
+
+                        <td>{{$student->firstname}} {{$student->lastname}}</td>
 
                         <td class="text-center">
 
-                            <a href="{{route("admin.behavior.create",$student->id)}}"><button class="btn btn-primary btn-sm">Ajouter un comportement</button></a>
+                            <a href="{{route("sdg.behavior.create",$student->id)}}"><button class="btn btn-primary btn-sm">Ajouter un comportement</button></a>
                         </td>
 
                         <td class="text-center">

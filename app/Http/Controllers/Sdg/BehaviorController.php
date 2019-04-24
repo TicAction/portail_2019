@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Director;
 
 use App\Behavior;
+use App\Http\Controllers\Controller;
 use App\Mail\BehaviorCreated;
 use App\Observation;
 use App\Student;
@@ -15,18 +16,7 @@ class BehaviorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-        $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
-        return view('behaviors.index',compact('behaviors'));
+        $this->middleware('sdg');
     }
 
     /**
@@ -40,7 +30,7 @@ class BehaviorController extends Controller
         $student = Student::findOrFail($id);
         $observations = Observation::all();
 
-        return view('behaviors.create',compact('student','observations'));
+        return view('sdgs/behaviors.create',compact('student','observations'));
     }
 
     /**
@@ -72,17 +62,14 @@ class BehaviorController extends Controller
             foreach ($behavior->students as $student):
                 foreach ($student->users as $user):
 
-
-                      Mail::to([$user->email,'hlaforest@cssh.qc.ca'])->send(
+                      Mail::to([$user->email])->send(
                           new BehaviorCreated($behavior)
-
                       );
-
             endforeach;
             endforeach;
 
 
-      return redirect('/')->with('success','Le nouveau comportement à bien été enregistré');
+      return redirect('/admin/index')->with('success','Le nouveau comportement à bien été enregistré');
     }
 
     /**
@@ -94,7 +81,7 @@ class BehaviorController extends Controller
     public function show(Behavior $behavior)
     {
 
-        return view('behaviors.show',compact('behavior'));
+        return view('sdgs/behaviors.show',compact('behavior'));
     }
 
     /**
@@ -113,7 +100,7 @@ class BehaviorController extends Controller
         $level_two = $observations->where('severity_id','=',2)->pluck('observation','id');
         $level_three = $observations->where('severity_id','=',3)->pluck('observation','id');
 
-        return view('behaviors.edit',compact('students','behavior','level_one','level_two','level_three','observations'));
+        return view('sdgs/behaviors.edit',compact('students','behavior','level_one','level_two','level_three','observations'));
     }
 
     /**
@@ -139,7 +126,7 @@ class BehaviorController extends Controller
         $behavior->observations()->sync($observations,true) ;
         $behavior->students()->sync($students,true) ;
 
-        return redirect('/')->with('success','Les modifications ont été faites');
+        return redirect('/admin/index')->with('success','Les modifications ont été faites');
     }
 
     /**
@@ -155,6 +142,6 @@ class BehaviorController extends Controller
         $behavior->students()->detach();
 
         $behavior->delete();
-        return redirect('/')->with('danger','Le comportement à été effacé');
+        return redirect('/admin/index')->with('danger','Le comportement à été effacé');
     }
 }

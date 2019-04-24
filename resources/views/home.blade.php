@@ -10,7 +10,7 @@
         </div>
 
 
-    @foreach($behaviors->sortBy("behavior_date") as $behavior)
+    @foreach($behaviors->sortByDesc("behavior_date") as $behavior)
          @foreach($behavior->students as $student)
              @if($behavior->behavior_date >= \Carbon\Carbon::now()->subMonth('1'))
              <div class="card-body">
@@ -26,7 +26,7 @@
              </strong>
             <hr>
                  {!!  $behavior->behavior_content!!}
-                 @if($behavior->respect == '1')
+                 @if($behavior->respect === '1')
                      <strong>
                          Manque de respect
                      </strong>
@@ -36,12 +36,19 @@
                 @endforeach
                 </ul>
             </div>
+
                 <div class="text-right">
                     <a href="{{route('behavior.edit',$behavior->id)}}">
                         <button class="btn btn-primary btn-sm">Modifier</button>
                     </a>
 
                 </div>
+                 <div class="text-right">
+                     <form action="{{route('behavior.delete',$behavior->id)}}" method="POST">
+                         @method('DELETE') @csrf
+                         <button class="btn btn-danger btn-sm" type="submit">Effacer</button>
+                     </form>
+                 </div>
              @endif
          @endforeach
      @endforeach

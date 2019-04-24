@@ -20,7 +20,7 @@ class BehaviorCreated extends Mailable
 
     public function __construct(Behavior $behavior)
     {
-        $this->subject('Nouvelle entrée');
+        $this->subject('Concernant un élève');
         $this->behavior = $behavior;
     }
 

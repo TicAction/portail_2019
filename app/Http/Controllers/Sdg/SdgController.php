@@ -10,13 +10,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class SdgController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('sdg');
 
     }
     public function export_pdf(Pi $pi)
@@ -34,9 +33,8 @@ class AdminController extends Controller
 
         $behaviors = Behavior::orderBy('behavior_date','desc')->paginate(15);
         $behaviors->load(['students','observations','user']);
-        $students = Student::all();
 
-        return view('directors.index', compact('behaviors','students'));
+        return view('sdgs.index', compact('behaviors'));
     }
 
     public function pi()
@@ -44,7 +42,7 @@ class AdminController extends Controller
         $pis = Pi::orderBy('pi_date','desc')->paginate(5);
         $pis->load(['student']);
 
-        return view('directors/pis.pi',compact('pis'));
+        return view('sdgs/pis.pi',compact('pis'));
 
     }
 
@@ -52,20 +50,10 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('directors.classroom',compact('user'));
+        return view('sdgs.classroom',compact('user'));
     }
 
-    public function show($id)
-    {
-       $student =Student::findOrFail($id);
 
-        return view('directors/behaviors.show',compact('student'));
-    }
 
-    public function search(Request $request)
-    {
-            $id =$request->get('student');
-        return redirect('admin/comportement/'.$id);
-    }
 
 }

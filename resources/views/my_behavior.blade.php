@@ -30,13 +30,16 @@
                             <strong>
                                 {{$behavior->respect == '1' ? 'Manque de respect' : ''}}
                             </strong>
-
+                <br>
+                               Attribué par : {{$behavior->user->name}}
                          <br>
 
                          @foreach($behavior->observations as $observation)
                              <br>
                                 <ul> <li>
                                         {{$observation->observation}}
+                    <br>
+
                                 </li></ul>
                          @endforeach
                 <a href="{{route('behavior.edit',$behavior->id)}}">
