@@ -15,7 +15,9 @@
          </p>
        </div>
 
-            @foreach($interventions as $intervention)
+            @foreach($interventions->sortByDesc('intervention_date') as $intervention)
+                @foreach(Auth::user()->students as $student)
+                    @if($student->id == $intervention->student_id)
             <div class="row">
                 <div class="col-md-3">
                     <strong>
@@ -37,6 +39,8 @@
                 </div>
             </div>
                 <hr>
+            @endif
+            @endforeach
         @endforeach
          </div>
 

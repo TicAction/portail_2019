@@ -12,7 +12,10 @@
 
     @foreach($behaviors->sortByDesc("behavior_date") as $behavior)
          @foreach($behavior->students as $student)
+             @foreach(Auth::user()->students as $stu)
+                 @if($stu->id == $student->id)
              @if($behavior->behavior_date >= \Carbon\Carbon::now()->subMonth('1'))
+
              <div class="card-body">
 
              <strong>
@@ -36,20 +39,28 @@
                 @endforeach
                 </ul>
             </div>
+                <div class="offset-10">
+                    <div class="row">
 
-                <div class="text-right">
-                    <a href="{{route('behavior.edit',$behavior->id)}}">
-                        <button class="btn btn-primary btn-sm">Modifier</button>
-                    </a>
+                        <a href="{{route('behavior.edit',$behavior->id)}}">
+                            <button class="btn btn-primary btn-sm">Modifier</button>
+                        </a>
 
+                <div class="offset-1">
+                    <form action="{{route('behavior.delete',$behavior->id)}}" method="POST">
+                        @method('DELETE') @csrf
+                        <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Voulez-vous vraiment effacer cet élève ainsi que toutes \n ainsi que toutes les données le concernant ?')">Effacer</button>
+                    </form>
                 </div>
-                 <div class="text-right">
-                     <form action="{{route('behavior.delete',$behavior->id)}}" method="POST">
-                         @method('DELETE') @csrf
-                         <button class="btn btn-danger btn-sm" type="submit">Effacer</button>
-                     </form>
-                 </div>
+
+
+                    </div>
+                </div>
+
+
              @endif
+             @endif
+         @endforeach
          @endforeach
      @endforeach
     </div>

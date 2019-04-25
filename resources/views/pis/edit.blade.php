@@ -18,7 +18,7 @@
                 {{--{!! Form::select('student', $pi->student->fullname , null , ['class' => 'form-control']) !!}--}}
 
                 <label for="student">Date du PI</label>
-                {!! Form::date('pi_date', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                {!! Form::date('pi_date', $pi->pi_date, ['class' => 'form-control']) !!}
 
 
 

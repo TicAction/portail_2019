@@ -43,7 +43,7 @@
             </div>
 
         </div>
-        @foreach($student->behaviors as $behavior)
+        @foreach($student->behaviors->sortByDesc('behavior_date') as $behavior)
             <div class="card-body">
 
                 <strong>{{$behavior->behavior_date->format('d-m-Y')}}  --- {{$behavior->user['name']}}</strong>
@@ -83,7 +83,7 @@
             <h5>Intervention classe pour {{$student->full_name}}</h5>
         </div>
         <div class="card-body">
-            @foreach($student->interventions as $intervention)
+            @foreach($student->interventions->sortByDesc('intervention_date') as $intervention)
              <strong>{{$intervention->intervention_date->format('d-m-Y')}} --- {{$intervention->intervention_period}}</strong>
             {!! $intervention->intervention_content !!}
 
