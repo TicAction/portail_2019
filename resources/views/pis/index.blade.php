@@ -50,7 +50,8 @@
 
     </div>
 
-
+</p>
+    <p>
     <div class="card">
         <div class="card-header text-white bg-primary">
             <h5>Liste des plans faits</h5>
