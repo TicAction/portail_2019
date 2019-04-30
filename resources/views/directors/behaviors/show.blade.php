@@ -20,7 +20,7 @@
                     <tr>
                         <td width="15%">{{$behavior->user['name']}}</td>
                         <td width="15%">{{$behavior->behavior_date->format('d/m/Y')}}</td>
-                        <td width="70%">{{$behavior->behavior_content}}$</td>
+                        <td width="70%">{!! $behavior->behavior_content !!}$</td>
                     </tr>
                         @endforeach
                 </table>
