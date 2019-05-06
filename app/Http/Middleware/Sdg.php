@@ -16,10 +16,10 @@ class Sdg
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role == 'SDG') {
+        if (Auth::user() && Auth::user()->role == 'Sdg') {
             return $next($request);
         }
 
-        return redirect('/');
+        return back()->with('danger',"Vous ne pouvez accéder aux pages du Service de garde");
     }
 }

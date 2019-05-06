@@ -31,10 +31,11 @@ class PiController extends Controller
      */
     public function index()
     {
-        $pis = Pi::where('pi_date','>=', Carbon::now()->subDays(1))->orderBy('pi_date','asc')->paginate(5);
+        $pis = Pi::where('pi_date','>=', Carbon::now()->subDays(1))->orderBy('pi_date','asc')->paginate(10);
+
         $pis->load(['student']);
 
-       return view('pis.index',compact('pis'));
+       return view('pis.index',compact('pis','pi_done'));
     }
 
     /**
