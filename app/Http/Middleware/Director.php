@@ -20,6 +20,6 @@ class Director
             return $next($request);
         }
 
-        return redirect('/');
+        return back()->with('danger',"Vous ne pouvez pas accéder aux pages de la directions");
     }
 }

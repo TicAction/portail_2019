@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $behaviors = Behavior::where('user_id','=',Auth::user()->id)->get();
+        $behaviors = Behavior::all();
 
         $behaviors->load(['students','observations','user']);
 

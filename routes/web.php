@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\StudentsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +12,23 @@ use App\Http\Controllers\StudentsController;
 | contains the "web" middleware group. Now create something great!
 
  */
+//test
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/register', 'DirectorAuth\RegisterController@showRegistrationForm');
+    Route::post('register', 'DirectorAuth\RegisterController@register')->name('director.register');
+    Route::get('director', 'DirectorAuth\AdminController@director')->name('admin')->middleware('admin');
+});
+
+//fin du test
+
+//test
+Route::group(['prefix' => 'sdg'], function () {
+    Route::get('/service_de_garde', 'SdgAuth\SdgController@sdg')->name('sdg')->middleware('sdg');
+    Route::get('/register', 'SdgAuth\RegisterController@showRegistrationForm');
+    Route::post('register', 'SdgAuth\RegisterController@register')->name('sdg.register');
+});
+
+//fin du test
 
 // sectin literatie
 //Route::resources('literatie','LiteracyController');
@@ -20,42 +37,28 @@ Route::get('/cleaning/web/site', function() {
     $exitCode = Artisan::call('config:clear');
     return redirect('');
 });
+// Ortho route for login
+Route::group(['prefix'=>'ortho'], function() {
 
+// Login Routes...
+    Route::get('login', ['as' => 'ortho.login', 'uses' => 'OrthoAuth\LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'ortho.login.post', 'uses' => 'OrthoAuth\LoginController@login']);
+    Route::post('logout', ['as' => 'ortho.logout', 'uses' => 'OrthoAuth\LoginController@logout']);
+
+// Registration Routes...
+    Route::get('register', ['as' => 'register', 'uses' => 'OrthoAuth\RegisterController@showRegistrationForm']);
+    Route::post('register', ['as' => 'register.post', 'uses' => 'OrthoAuth\RegisterController@register']);
+
+// Password Reset Routes...
+    Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'OrthoAuth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as' => 'password.email', 'uses' => 'OrthoAuth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'OrthoAuth\ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'OrthoAuth\ResetPasswordController@reset']);
+});
 
 //
 Auth::routes();
 
-//Partie de la direction
-
-Route::get('admin/index','Director\AdminController@index')->name('admin.index');
-Route::get('admin/pi','Director\AdminController@pi')->name('admin.pi');
-Route::get('admin/classe/{id}','Director\AdminController@classroom')->name('admin.classroom');
-
-//admin behaviors
-Route::get('admin/comportement/{behavior}/modifier','Director\BehaviorController@edit')->name('admin.behavior.edit');
-Route::get('admin/comportement/creation/{id}','Director\BehaviorController@create')->name('admin.behavior.create');
-Route::put('admin/comportement/{behavior}','Director\BehaviorController@update')->name('admin.behavior.update');
-
-Route::get('admin/comportement/{id}','Director\AdminController@show')->name('admin.behavior.show');
-Route::post('admin/comportement/recherche','Director\AdminController@search')->name('admin.behavior.search');
-
-Route::post('admin/comportement','Director\BehaviorController@store')->name('admin.behavior.store');
-Route::delete('admin/comportement/{behavior}','Director\BehaviorController@destroy')->name('admin.behavior.destroy');
-
-
-//Partie de la SDG
-
-Route::get('sdg/index','Director\AdminController@index')->name('sdg.index');
-Route::get('sdg/pi','Director\AdminController@pi')->name('sdg.pi');
-Route::get('sdg/classe/{id}','Director\AdminController@classroom')->name('sdg.classroom');
-
-//sdg behaviors
-Route::get('sdg/comportement/{behavior}/modifier','Director\BehaviorController@edit')->name('sdg.behavior.edit');
-Route::get('sdg/comportement/creation/{id}','Director\BehaviorController@create')->name('sdg.behavior.create');
-Route::put('sdg/comportement/{behavior}','Director\BehaviorController@update')->name('sdg.behavior.update');
-
-Route::post('sdg/comportement','Director\BehaviorController@store')->name('sdg.behavior.store');
-Route::delete('sdg/comportement/{behavior}','Director\BehaviorController@destroy')->name('sdg.behavior.destroy');
 
 
 // méli-mélo

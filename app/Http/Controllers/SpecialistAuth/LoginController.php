@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\SpecialistAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -30,21 +30,11 @@ class LoginController extends Controller
     protected $redirectTo = '/';
     protected function authenticated(Request $request, $user)
     {
-        if ( Auth::user()->role === 'Direction' ) {
-            return redirect('/admin/director');
-        }
-        elseif ( Auth::user()->role === 'Sdg' ) {
-            return redirect('/sdg/service_de_garde');
-        }
-        elseif ( Auth::user()->role === 'Spécialiste' ) {
-            return redirect('/specialist');
-        }
-        elseif( Auth::user()->role === 'Orthopédagogue' ) {
-            return redirect('/ortho');
+        if ( Auth::user()->role === 'Direction' or Auth::user()->role === 'SDG' or Auth::user()->role === 'Orthopédagogue' ) {
+            return redirect('/admin/index');
         }
 
-
-        return back();
+        return redirect('/');
     }
     /**
      * Create a new controller instance.

@@ -33,7 +33,7 @@
         <div class="card-header text-white bg-primary mb-3">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>Comportement de {{$student->firstname}}</h5>
+                    <h5>Comportement de {{$student->fullname}}</h5>
                 </div>
                 <div class="col-md-6 text-right" >
 

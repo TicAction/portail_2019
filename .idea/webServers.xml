@@ -2,14 +2,6 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="49ecb18a-3d9d-4477-ab70-7b7b447b36d3" name="portail" url="http://ftp.edu-portail.ca">
-        <fileTransfer host="ftp.edu-portail.ca" port="21">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
-          </advancedOptions>
-          <option name="port" value="21" />
-        </fileTransfer>
-      </webServer>
       <webServer id="d769495e-5d7d-44a2-90ef-8d6d14e3ae0a" name="gestion" url="http://ftp.edu-gestion.ca">
         <fileTransfer host="ftp.edu-gestion.ca" port="21" rootFolder="/portail2">
           <advancedOptions>
