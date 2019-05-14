@@ -63,7 +63,7 @@
                                 <select name="role" id="role" class="form-control">
                                     <option value="0">Faire un choix</option>
                                     <option value="Enseignant">Enseignant</option>
-                                    <option value="Spécialiste">Spécialiste</option>
+                                    <option value="Specialiste">Spécialiste</option>
                                     <option value="Orthopédagogue">Orthopédagogue</option>
                                     <option value="Direction">Direction</option>
                                     <option value="Sdg">Sgd</option>

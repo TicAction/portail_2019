@@ -29,15 +29,14 @@ class RedirectIfAuthenticated
             if (Auth::user()->role === 'Ortho') {
                 return redirect('/ortho/orthopedagogue');
             }
+            if (Auth::user()->role === 'Specialiste') {
+                return redirect('/specialiste/specialiste');
+            }
             if (Auth::user()->role === 'Pne') {
                 return redirect('/pne/pne');
             }
             if (Auth::user()->role === 'Enseignant') {
                 return redirect('/');
-            }
-
-            if (Auth::user()->role === 'Spécialiste') {
-                return redirect('/specialiste/specialiste');
             }
             return redirect('/login');
         }

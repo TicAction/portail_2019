@@ -16,7 +16,7 @@ class Specialist
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role == 'Spécialiste') {
+        if (Auth::user() && Auth::user()->role == 'Specialiste') {
             return $next($request);
         }
 
