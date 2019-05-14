@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'ortho'=> \App\Http\Middleware\Ortho::class,
         'teacher'=> \App\Http\Middleware\Teacher::class,
         'pne'=> \App\Http\Middleware\Pne::class,
+        'specialist'=> \App\Http\Middleware\Specialist::class,
 
     ];
 

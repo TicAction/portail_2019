@@ -10,21 +10,19 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-
- */
-//test
+*/
+//début des sections//
 Route::group(['prefix' => 'admin'], function () {
     Route::get('director', 'DirectorAuth\AdminController@director')->name('admin')->middleware('admin');
 });
 
-//fin du test
-
-//test
+Route::group(['prefix' => 'specialiste'], function () {
+    Route::get('/specialiste', 'SpecialistAuth\SpecialistController@specialist')->name('specialist')->middleware('specialist');
+});
 
 Route::group(['prefix' => 'sdg'], function () {
     Route::get('/service_de_garde', 'SdgAuth\SdgController@sdg')->name('sdg')->middleware('sdg');
 });
-
 
 Route::group(['prefix' => 'ortho'], function () {
     Route::get('/orthopedagogue', 'OrthoAuth\OrthoController@ortho')->name('ortho')->middleware('ortho');
@@ -33,7 +31,7 @@ Route::group(['prefix' => 'ortho'], function () {
 Route::group(['prefix'=>"pne"], function () {
     Route::get('/pne', 'PneAuth\PneController@pne')->name('pne')->middleware('pne');
 });
-//fin du test
+//fin des sections spéciale
 
 // sectin literatie
 //Route::resources('literatie','LiteracyController');

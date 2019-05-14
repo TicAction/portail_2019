@@ -35,6 +35,10 @@ class RedirectIfAuthenticated
             if (Auth::user()->role === 'Enseignant') {
                 return redirect('/');
             }
+
+            if (Auth::user()->role === 'Spécialiste') {
+                return redirect('/specialiste/specialiste');
+            }
             return redirect('/login');
         }
 
