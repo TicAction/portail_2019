@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sdg')
 @section('content')
     <p>
        <h3>Je suis la page du SDG</h3>

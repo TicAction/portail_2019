@@ -19,13 +19,23 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
 
+
             if (Auth::user()->role === 'Direction') {
-                return redirect('/admin/index');
+                return redirect('/admin/director');
             }
-            if (Auth::user()->role === 'SDG') {
-                return redirect('/sdg/index');
+            if (Auth::user()->role === 'Sgd') {
+                return redirect('/sdg/sdg');
             }
-            return redirect('/');
+            if (Auth::user()->role === 'Ortho') {
+                return redirect('/ortho/orthopedagogue');
+            }
+            if (Auth::user()->role === 'Pne') {
+                return redirect('/pne/pne');
+            }
+            if (Auth::user()->role === 'Enseignant') {
+                return redirect('/');
+            }
+            return redirect('/login');
         }
 
         return $next($request);

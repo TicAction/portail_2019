@@ -34,6 +34,8 @@
                             </div>
                         </div>
 
+
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -51,6 +53,21 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __("Fonction dans l'école") }}</label>
+
+                            <div class="col-md-6">
+                                <select name="role" id="role" class="form-control">
+                                    <option value="0">Faire un choix</option>
+                                    <option value="Enseignant">Enseignant</option>
+                                    <option value="Orthopédagogue">Orthopédagogue</option>
+                                    <option value="Direction">Direction</option>
+                                    <option value="Sdg">Sgd</option>
+                                    <option value="Pne">Pne</option>
+                                </select>
                             </div>
                         </div>
 

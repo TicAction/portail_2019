@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Ortho
+class Teacher
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class Ortho
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && Auth::user()->role == 'Ortho') {
+        if (Auth::user() && Auth::user()->role == 'Enseignant') {
             return $next($request);
         }
 
-        return back()->with('danger',"Vous ne pouvez pas accéder aux pages des orthopédagogues");
+        return back()->with('danger',"Vous ne pouvez pas accéder aux pages des enseignants");
     }
 }

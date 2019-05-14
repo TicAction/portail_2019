@@ -14,20 +14,25 @@
  */
 //test
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/register', 'DirectorAuth\RegisterController@showRegistrationForm');
-    Route::post('register', 'DirectorAuth\RegisterController@register')->name('director.register');
     Route::get('director', 'DirectorAuth\AdminController@director')->name('admin')->middleware('admin');
 });
 
 //fin du test
 
 //test
+
 Route::group(['prefix' => 'sdg'], function () {
     Route::get('/service_de_garde', 'SdgAuth\SdgController@sdg')->name('sdg')->middleware('sdg');
-    Route::get('/register', 'SdgAuth\RegisterController@showRegistrationForm');
-    Route::post('register', 'SdgAuth\RegisterController@register')->name('sdg.register');
 });
 
+
+Route::group(['prefix' => 'ortho'], function () {
+    Route::get('/orthopedagogue', 'OrthoAuth\OrthoController@ortho')->name('ortho')->middleware('ortho');
+});
+
+Route::group(['prefix'=>"pne"], function () {
+    Route::get('/pne', 'PneAuth\PneController@pne')->name('pne')->middleware('pne');
+});
 //fin du test
 
 // sectin literatie
@@ -37,24 +42,6 @@ Route::get('/cleaning/web/site', function() {
     $exitCode = Artisan::call('config:clear');
     return redirect('');
 });
-// Ortho route for login
-Route::group(['prefix'=>'ortho'], function() {
-
-// Login Routes...
-    Route::get('login', ['as' => 'ortho.login', 'uses' => 'OrthoAuth\LoginController@showLoginForm']);
-    Route::post('login', ['as' => 'ortho.login.post', 'uses' => 'OrthoAuth\LoginController@login']);
-    Route::post('logout', ['as' => 'ortho.logout', 'uses' => 'OrthoAuth\LoginController@logout']);
-
-// Registration Routes...
-    Route::get('register', ['as' => 'register', 'uses' => 'OrthoAuth\RegisterController@showRegistrationForm']);
-    Route::post('register', ['as' => 'register.post', 'uses' => 'OrthoAuth\RegisterController@register']);
-
-// Password Reset Routes...
-    Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'OrthoAuth\ForgotPasswordController@showLinkRequestForm']);
-    Route::post('password/email', ['as' => 'password.email', 'uses' => 'OrthoAuth\ForgotPasswordController@sendResetLinkEmail']);
-    Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'OrthoAuth\ResetPasswordController@showResetForm']);
-    Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'OrthoAuth\ResetPasswordController@reset']);
-});
 
 //
 Auth::routes();
@@ -63,7 +50,7 @@ Auth::routes();
 
 // méli-mélo
 
-Route::get('', 'HomeController@index')->name('home');
+Route::get('', 'HomeController@index')->name('home')->middleware('teacher');
 Route::get('/mes-comportements','HomeController@behaviors')->name('my_behaviors');
 Route::get('/student/pdf/{student}','StudentController@export_pdf')->name('export_pdf');
 Route::get('/pi/pdf/{pi}','PiController@export_pdf')->name('pi_pdf');
